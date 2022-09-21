@@ -1,0 +1,48 @@
+---
+sources:
+- name: ruby/gem_rbs_collection
+  remote: https://github.com/ruby/gem_rbs_collection.git
+  revision: main
+  repo_dir: gems
+path: ".gem_rbs_collection"
+gems:
+- name: faraday
+  version: '2.5'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: ast
+  version: '2.4'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: minitest
+  version: '0'
+  source:
+    type: stdlib
+- name: parallel
+  version: '1.20'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: rainbow
+  version: '3.0'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: mutex_m
+  version: '0'
+  source:
+    type: stdlib

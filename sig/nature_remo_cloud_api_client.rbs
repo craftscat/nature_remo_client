@@ -1,0 +1,43 @@
+module NatureRemo
+  VERSION: String
+
+  module Endpoints
+    include Users
+
+    module Users
+    end
+  end
+
+  class Error < StandardError
+  end
+
+  class Client
+    BASE_URL: String
+    API_VERSION: String
+    include Endpoints
+
+    @client: Faraday::Connection
+
+    def initialize: (String access_token) -> void
+    def user: -> String
+    def update_user_nickname: (String nickname) -> String
+
+    private
+    def get: (String path) -> String
+    def post: (String path, ?(Hash[untyped, untyped] | nil) params) -> String
+  end
+end
+
+# faraday's type definition is not sufficient
+# https://github.com/ruby/gem_rbs_collection/pull/211
+module Faraday
+  attr_reader self.default_adapter: Symbol
+
+  class Connection
+    attr_reader headers: Hash[String, String]
+  end
+
+  class Response
+    def success?: () -> bool
+  end
+end
