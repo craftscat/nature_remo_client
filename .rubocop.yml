@@ -1,0 +1,17 @@
+require:
+  - rubocop-minitest
+  - rubocop-rake
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.6
+  Exclude:
+    - Steepfile
+
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*.rb'
+
+Layout/LineLength:
+  Max: 140
