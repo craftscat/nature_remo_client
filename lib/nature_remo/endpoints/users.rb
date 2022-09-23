@@ -9,17 +9,17 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/get_1_users_me
-      def user
+      def user_me
         get('users/me')
       end
 
       # Update authenticated user nickname.
-      # @params [String] New user nickname.
+      # @param [String] nickname New user's nickname.
       # @return [String] Updated user information.
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_users_me
-      def update_user_nickname(nickname)
+      def update_user_me(nickname:)
         post('users/me', { nickname: nickname })
       end
     end
