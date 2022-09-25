@@ -10,7 +10,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/get_1_appliances__appliance__signals
-      def signals(appliance_id)
+      def signals(appliance_id:)
         get("appliances/#{appliance_id}/signals")
       end
 
@@ -23,7 +23,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_appliances__appliance__signals
-      def create_signals(appliance_id, message, image, name)
+      def create_signal(appliance_id:, name:, image:, message:)
         params = {
           name: name,
           image: image,
@@ -40,8 +40,8 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_appliances__appliance__signal_orders
-      def update_signals_order(appliance_id, signal_ids)
-        post("appliances/#{appliance_id}/signals", { signals: signal_ids })
+      def update_signal_orders(appliance_id:, signal_ids:)
+        post("appliances/#{appliance_id}/signal_orders", { signals: signal_ids })
       end
 
       # Update infrared signal.
@@ -52,8 +52,8 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_signals__signal_
-      def update_signal(signal_id, image, name)
-        post("signals/#{signal_id}", { image: image, name: name })
+      def update_signal(signal_id:, name:, image:)
+        post("signals/#{signal_id}", { name: name, image: image })
       end
 
       # Delete an infrared signal.
@@ -62,7 +62,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_signals__signal__delete
-      def delete_signal(signal_id)
+      def delete_signal(signal_id:)
         post("signals/#{signal_id}/delete")
       end
 
@@ -72,7 +72,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_signals__signal__send
-      def send_signal(signal_id)
+      def send_signal(signal_id:)
         post("signals/#{signal_id}/send")
       end
     end

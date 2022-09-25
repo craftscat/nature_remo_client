@@ -20,7 +20,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_devices__device_
-      def update_device(device_id, name)
+      def update_device(device_id:, name:)
         post("devices/#{device_id}", { name: name })
       end
 
@@ -30,7 +30,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_devices__device__delete
-      def delete_device(device_id)
+      def delete_device(device_id:)
         post("devices/#{device_id}/delete")
       end
 
@@ -41,7 +41,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_devices__device__temperature_offset
-      def update_device_temperature_offset(device_id, offset)
+      def update_device_temperature_offset(device_id:, offset:)
         post("devices/#{device_id}/temperature_offset", { offset: offset })
       end
 
@@ -52,7 +52,7 @@ module NatureRemo
       # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
       #
       # https://swagger.nature.global/#/default/post_1_devices__device__humidity_offset
-      def update_device_humidity_offset(device_id, offset)
+      def update_device_humidity_offset(device_id:, offset:)
         post("devices/#{device_id}/humidity_offset", { offset: offset })
       end
     end

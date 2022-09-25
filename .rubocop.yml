@@ -15,3 +15,8 @@ Metrics/MethodLength:
 
 Layout/LineLength:
   Max: 140
+  Exclude:
+    - 'test/**/*.rb'
+
+Metrics/ParameterLists:
+  Max: 6
