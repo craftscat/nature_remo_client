@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class UserMeTest < Minitest::Test
-  def test_user_success
+  def test_user_me_success
     client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:get, 'https://api.nature.global/1/users/me')
            .with(
@@ -20,7 +20,7 @@ class UserMeTest < Minitest::Test
     assert_equal "{\n\"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n\"nickname\": \"string\"\n}", client.user_me
   end
 
-  def test_user_failure
+  def test_user_me_failure
     client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:get, 'https://api.nature.global/1/users/me')
            .with(
