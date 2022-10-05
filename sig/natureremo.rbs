@@ -1,0 +1,79 @@
+module NatureRemo
+  VERSION: String
+
+  module Endpoints
+    include Appliances
+    include Devices
+    include Signals
+    include Users
+
+    module Appliances
+    end
+    module Devices
+    end
+    module Signals
+    end
+    module Users
+    end
+  end
+
+  class Error < StandardError
+  end
+
+  class Client
+    BASE_URL: String
+    API_VERSION: String
+    include Endpoints
+
+    @client: Faraday::Connection
+
+    def initialize: (String access_token) -> void
+
+    # NatureRemo::Endpoints::Appliances
+    def appliances: -> String
+    def create_appliance: (String appliance_id, String nickname, String image, String model, String model_type) -> String
+    def update_appliance_orders: (Array[String] appliance_ids) -> String
+    def delete_appliance: (String appliance_id) -> String
+    def update_appliance: (String appliance_id, String nickname, String image) -> String
+    def update_aircon_settings: (String appliance_id, String temperature, String operation_mode, String air_volume, String air_direction) -> String
+    def update_tv_state: (String appliance_id, String button) -> String
+    def update_light_state: (String appliance_id, String button) -> String
+
+    # NatureRemo::Endpoints::Devices
+    def devices: -> String
+    def update_device: (String device_id, String name) -> String
+    def delete_device: (String device_id) -> String
+    def update_device_temperature_offset: (String device_id, String offset) -> String
+    def update_device_humidity_offset: (String device_id, String offset) -> String
+
+    # NatureRemo::Endpoints::Signals
+    def signals: (String device_id) -> String
+    def create_signal: (String appliance_id, String name, String image, String message) -> String
+    def update_signal_orders: (String appliance_id, Array[String] signal_ids) -> String
+    def update_signal: (String appliance_id, String name, String image) -> String
+    def delete_signal: (String signal_id) -> String
+    def send_signal: (String signal_id) -> String
+
+    # NatureRemo::Endpoints::Users
+    def user: -> String
+    def update_user_nickname: (String nickname) -> String
+
+    private
+    def get: (String path) -> String
+    def post: (String path, ?(Hash[untyped, untyped] | nil) params) -> String
+  end
+end
+
+# faraday's type definition is not sufficient
+# https://github.com/ruby/gem_rbs_collection/pull/211
+module Faraday
+  attr_reader self.default_adapter: Symbol
+
+  class Connection
+    attr_reader headers: Hash[String, String]
+  end
+
+  class Response
+    def success?: () -> bool
+  end
+end
