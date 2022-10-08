@@ -23,7 +23,7 @@ class UpdateSignalOrdersTest < Minitest::Test
     assert_equal '', @client.update_signal_orders(appliance_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6', signal_ids: %w[db37aa9b-dbc8 4386-803e])
   end
 
-  def test_update_signal_orders_failure
+  def test_update_signal_orders_auth_failure
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:post, 'https://api.nature.global/1/appliances/3fa85f64-5717-4562-b3fc-2c963f66afa6/signal_orders')
            .with(
@@ -35,13 +35,13 @@ class UpdateSignalOrdersTest < Minitest::Test
                signals: %w[db37aa9b-dbc8 4386-803e]
              }
            )
-           .to_return(status: 500, body: 'error')
+           .to_return(status: 401, body: '{"code": 401001, "message": "認証エラー"}')
 
-    error = assert_raises NatureRemo::Error do
+    error = assert_raises NatureRemo::Unauthorized do
       @client.update_signal_orders(appliance_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6', signal_ids: %w[db37aa9b-dbc8 4386-803e])
     end
 
-    assert_equal 'request failed with status code 500, error', error.message
+    assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
   def test_update_signal_orders_timeout

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require 'faraday'
 require_relative 'endpoints'
-require_relative 'errors'
 
 module NatureRemo
   # Client to send requests to Nature Remo cloud API
@@ -17,8 +15,9 @@ module NatureRemo
 
       @client = Faraday.new(url: "#{BASE_URL}#{API_VERSION}/") do |conn|
         conn.request :json
-        conn.response :json, content_type: /\bjson$/
+        conn.response :json, content_type: /\bjson$/, parser_options: { symbolize_names: true }
         conn.adapter Faraday.default_adapter
+        conn.use RaiseError
       end
       @client.headers['Authorization'] = "Bearer #{access_token}"
     end

@@ -23,7 +23,7 @@ class UpdateApplianceOrdersTest < Minitest::Test
     assert_equal '', @client.update_appliance_orders(appliance_ids: %w[db37aa9b-dbc8 4386-803e])
   end
 
-  def test_update_appliance_orders_failure
+  def test_update_appliance_orders_auth_failure
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:post, 'https://api.nature.global/1/appliance_orders')
            .with(
@@ -35,13 +35,13 @@ class UpdateApplianceOrdersTest < Minitest::Test
                appliances: %w[db37aa9b-dbc8 4386-803e]
              }
            )
-           .to_return(status: 500, body: 'error')
+           .to_return(status: 401, body: '{"code": 401001, "message": "認証エラー"}')
 
-    error = assert_raises NatureRemo::Error do
+    error = assert_raises NatureRemo::Unauthorized do
       @client.update_appliance_orders(appliance_ids: %w[db37aa9b-dbc8 4386-803e])
     end
 
-    assert_equal 'request failed with status code 500, error', error.message
+    assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
   def test_update_appliance_orders_timeout

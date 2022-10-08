@@ -23,7 +23,7 @@ class UpdateDeviceTemperatureTest < Minitest::Test
     assert_equal '{}', @client.update_device_temperature_offset(device_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6', offset: 1)
   end
 
-  def test_update_device_temperature_offset_failure
+  def test_update_device_temperature_offset_auth_failure
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:post, 'https://api.nature.global/1/devices/3fa85f64-5717-4562-b3fc-2c963f66afa6/temperature_offset')
            .with(
@@ -35,13 +35,13 @@ class UpdateDeviceTemperatureTest < Minitest::Test
                offset: 1
              }
            )
-           .to_return(status: 500, body: 'error')
+           .to_return(status: 401, body: '{"code": 401001, "message": "認証エラー"}')
 
-    error = assert_raises NatureRemo::Error do
+    error = assert_raises NatureRemo::Unauthorized do
       @client.update_device_temperature_offset(device_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6', offset: 1)
     end
 
-    assert_equal 'request failed with status code 500, error', error.message
+    assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
   def test_update_device_temperature_offset_timeout
