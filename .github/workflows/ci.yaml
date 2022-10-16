@@ -8,15 +8,16 @@ on:
 
 jobs:
   test:
-    name: Test on Ruby ${{ matrix.ruby }}
-    runs-on: ubuntu-latest
+    name: Test on Ruby ${{ matrix.ruby }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu, macos]
         ruby: ['2.6', '2.7', '3.0', '3.1']
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Ruby
+      - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -25,3 +26,33 @@ jobs:
         run: bundle install --jobs 4 --retry 3
       - name: Run tests
         run: bundle exec rake test
+
+  linting:
+    name: Linting with RuboCop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Ruby 2.6
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bundle exec rubocop
+
+  type-checking:
+    name: Type checking with Steep
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby 3
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+    - name: Install gem_rbs_collection
+      run: bundle exec rbs collection install
+    - name: Run steep check
+      run: bundle exec steep check
