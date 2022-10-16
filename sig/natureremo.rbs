@@ -17,9 +17,6 @@ module NatureRemo
     end
   end
 
-  class Error < StandardError
-  end
-
   class Client
     BASE_URL: String
     API_VERSION: String
@@ -62,18 +59,57 @@ module NatureRemo
     def get: (String path) -> String
     def post: (String path, ?(Hash[untyped, untyped] | nil) params) -> String
   end
+
+  class Error < StandardError
+    attr_reader env: untyped
+    attr_reader url: untyped
+    attr_reader status: untyped
+    attr_reader headers: untyped
+    attr_reader body: untyped
+    attr_reader error_code: untyped
+
+    def initialize: (env: untyped) -> void
+  end
+
+  class ClientError < Error
+  end
+  class BadRequest < ClientError
+  end
+  class Unauthorized < ClientError
+  end
+  class Forbidden < ClientError
+  end
+  class NotFound < ClientError
+  end
+  class MethodNotAllowed < ClientError
+  end
+  class PayloadTooLarge < ClientError
+  end
+  class UnprocessableEntity < ClientError
+  end
+  class TooManyRequests < ClientError
+  end
+
+  class ServerError < Error
+  end
+  class InternalServerError < ServerError
+  end
+  class BadGateway < ServerError
+  end
+  class ServiceUnavailable < ServerError
+  end
+  class GatewayTimeout < ServerError
+  end
+  class NilStatusError < ServerError
+  end
+
+  class RaiseError < Faraday::Middleware
+    def on_complete: (untyped env) -> untyped
+  end
 end
 
 # faraday's type definition is not sufficient
-# https://github.com/ruby/gem_rbs_collection/pull/211
 module Faraday
-  attr_reader self.default_adapter: Symbol
-
-  class Connection
-    attr_reader headers: Hash[String, String]
-  end
-
-  class Response
-    def success?: () -> bool
+  class Middleware
   end
 end

@@ -11,7 +11,15 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: activesupport
+  version: '6.0'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: ast
@@ -19,7 +27,27 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: i18n
+  version: '1.10'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: json
+  version: '0'
+  source:
+    type: stdlib
+- name: listen
+  version: '3.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: minitest
@@ -31,7 +59,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rainbow
@@ -39,10 +67,38 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 52f2afbc5e8a5638082cacfa6325ee6f0d9f22af
+    revision: 84a7431af1db405ef827bfdd171a37a1416f6099
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: uri
+  version: '0'
+  source:
+    type: stdlib
+- name: monitor
+  version: '0'
+  source:
+    type: stdlib
+- name: date
+  version: '0'
+  source:
+    type: stdlib
+- name: singleton
+  version: '0'
+  source:
+    type: stdlib
+- name: logger
+  version: '0'
+  source:
+    type: stdlib
 - name: mutex_m
+  version: '0'
+  source:
+    type: stdlib
+- name: time
+  version: '0'
+  source:
+    type: stdlib
+- name: pathname
   version: '0'
   source:
     type: stdlib
