@@ -29,8 +29,8 @@ module NatureRemo
           nickname: nickname,
           image: image
         }
-        params[:model] = model if model.present?
-        params[:model_type] = model_type if model_type.present?
+        params[:model] = model if model
+        params[:model_type] = model_type if model_type
 
         post('appliances', params)
       end
@@ -80,11 +80,11 @@ module NatureRemo
       # https://swagger.nature.global/#/default/post_1_appliances__appliance__aircon_settings
       def update_aircon_settings(appliance_id:, button: nil, temperature: nil, operation_mode: nil, air_volume: nil, air_direction: nil)
         params = {}
-        params[:button] = button if button.present?
-        params[:temperature] = temperature if temperature.present?
-        params[:operation_mode] = operation_mode if operation_mode.present?
-        params[:air_volume] = air_volume if air_volume.present?
-        params[:air_direction] = air_direction if air_direction.present?
+        params[:button] = button if button
+        params[:temperature] = temperature if temperature
+        params[:operation_mode] = operation_mode if operation_mode
+        params[:air_volume] = air_volume if air_volume
+        params[:air_direction] = air_direction if air_direction
 
         post("appliances/#{appliance_id}/aircon_settings", params)
       end
