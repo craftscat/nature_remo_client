@@ -4,7 +4,7 @@ require_relative 'errors'
 
 module NatureRemo
   # RaiseError is a Faraday response middleware that raises an error if NatureRemo returns non-2xx status codes.
-  class RaiseError < Faraday::Response::Middleware
+  class RaiseError < Faraday::Middleware
     def on_complete(env) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
       case env[:status]
       when 400

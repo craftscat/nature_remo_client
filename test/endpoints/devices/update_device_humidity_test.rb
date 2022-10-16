@@ -44,6 +44,27 @@ class UpdateDeviceHumidityTest < Minitest::Test
     assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
+  def test_update_device_humidity_offset_internal_server_error
+    @client = NatureRemo::Client.new('token-xxxxx')
+    WebMock.stub_request(:post, 'https://api.nature.global/1/devices/3fa85f64-5717-4562-b3fc-2c963f66afa6/humidity_offset')
+           .with(
+             headers: {
+               'Accept' => '*/*',
+               'Authorization' => 'Bearer token-xxxxx'
+             },
+             body: {
+               offset: 1
+             }
+           )
+           .to_return(status: 500)
+
+    error = assert_raises NatureRemo::InternalServerError do
+      @client.update_device_humidity_offset(device_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6', offset: 1)
+    end
+
+    assert_equal 'request failed with status code 500, ', error.message
+  end
+
   def test_update_device_humidity_offset_timeout
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:post, 'https://api.nature.global/1/devices/3fa85f64-5717-4562-b3fc-2c963f66afa6/humidity_offset')

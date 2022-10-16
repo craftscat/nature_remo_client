@@ -38,6 +38,24 @@ class SignalsTest < Minitest::Test
     assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
+  def test_signal_internal_server_error
+    @client = NatureRemo::Client.new('token-xxxxx')
+    WebMock.stub_request(:get, 'https://api.nature.global/1/appliances/3fa85f64-5717-4562-b3fc-2c963f66afa6/signals')
+           .with(
+             headers: {
+               'Accept' => '*/*',
+               'Authorization' => 'Bearer token-xxxxx'
+             }
+           )
+           .to_return(status: 500)
+
+    error = assert_raises NatureRemo::InternalServerError do
+      @client.signals(appliance_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6')
+    end
+
+    assert_equal 'request failed with status code 500, ', error.message
+  end
+
   def test_signal_me_timeout
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:get, 'https://api.nature.global/1/appliances/3fa85f64-5717-4562-b3fc-2c963f66afa6/signals')

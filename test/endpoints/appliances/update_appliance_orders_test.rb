@@ -44,6 +44,27 @@ class UpdateApplianceOrdersTest < Minitest::Test
     assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
+  def test_update_appliance_internal_server_error
+    @client = NatureRemo::Client.new('token-xxxxx')
+    WebMock.stub_request(:post, 'https://api.nature.global/1/appliance_orders')
+           .with(
+             headers: {
+               'Accept' => '*/*',
+               'Authorization' => 'Bearer token-xxxxx'
+             },
+             body: {
+               appliances: %w[db37aa9b-dbc8 4386-803e]
+             }
+           )
+           .to_return(status: 500)
+
+    error = assert_raises NatureRemo::InternalServerError do
+      @client.update_appliance_orders(appliance_ids: %w[db37aa9b-dbc8 4386-803e])
+    end
+
+    assert_equal 'request failed with status code 500, ', error.message
+  end
+
   def test_update_appliance_orders_timeout
     @client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:post, 'https://api.nature.global/1/appliance_orders')

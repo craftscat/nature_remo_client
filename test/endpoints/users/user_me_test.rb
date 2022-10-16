@@ -38,6 +38,24 @@ class UserMeTest < Minitest::Test
     assert_equal 'request failed with status code 401, {"code": 401001, "message": "認証エラー"}', error.message
   end
 
+  def test_user_me_auth_internal_server_error
+    client = NatureRemo::Client.new('token-xxxxx')
+    WebMock.stub_request(:get, 'https://api.nature.global/1/users/me')
+           .with(
+             headers: {
+               'Accept' => '*/*',
+               'Authorization' => 'Bearer token-xxxxx'
+             }
+           )
+           .to_return(status: 500)
+
+    error = assert_raises NatureRemo::InternalServerError do
+      client.user_me
+    end
+
+    assert_equal 'request failed with status code 500, ', error.message
+  end
+
   def test_user_me_timeout
     client = NatureRemo::Client.new('token-xxxxx')
     WebMock.stub_request(:get, 'https://api.nature.global/1/users/me')
