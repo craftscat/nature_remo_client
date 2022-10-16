@@ -13,7 +13,7 @@ module NatureRemo
         get('appliances')
       end
 
-      # Create a signal under this appliance.
+      # Create a new appliance.
       # @param [String] device_id Device ID
       # @param [String] nickname Appliance name.
       # @param [String] image Basename of the image file included in the app. Ex: "ico_ac_1"
@@ -45,16 +45,6 @@ module NatureRemo
         post('appliance_orders', { appliances: appliance_ids })
       end
 
-      # Delete appliance.
-      # @param [String] appliance_id Appliance ID.
-      # @return [String] Deleted an appliance.
-      # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
-      #
-      # https://swagger.nature.global/#/default/post_1_appliances__appliance__delete
-      def delete_appliance(appliance_id:)
-        post("appliances/#{appliance_id}/delete")
-      end
-
       # Update appliance.
       # @param [String] appliance_id Appliance ID.
       # @param [String] nickname Appliance name
@@ -65,6 +55,16 @@ module NatureRemo
       # https://swagger.nature.global/#/default/post_1_appliances__appliance_
       def update_appliance(appliance_id:, nickname:, image:)
         post("appliances/#{appliance_id}", { nickname: nickname, image: image })
+      end
+
+      # Delete appliance.
+      # @param [String] appliance_id Appliance ID.
+      # @return [String] Deleted an appliance.
+      # @raise [NatureRemo::ServerError] Raise error if resposonse status is NOT success.
+      #
+      # https://swagger.nature.global/#/default/post_1_appliances__appliance__delete
+      def delete_appliance(appliance_id:)
+        post("appliances/#{appliance_id}/delete")
       end
 
       # Update air conditioner settings.

@@ -15,8 +15,97 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install natureremo
 
 ## Usage
+### Users
 
-TODO: Write usage instructions here
+```ruby
+require 'natureremo'
+
+client = NatureRemo::Client.new(<token>)
+
+# Get user info
+client.user_me
+
+# Update user nickname
+client.update_user_me(nickname: <nickname>)
+```
+
+### Deices
+```ruby
+require 'natureremo'
+
+client = NatureRemo::Client.new(<token>)
+
+# Get Remos
+client.devices
+
+# Update Remo name
+client.update_device(device_id: <device_id>, name: <name>)
+
+# Delete Remo
+client.delete_device(device_id: <device_id>)
+
+# Update temperature offset
+client.update_device_temperature_offset(device_id: <divice_id>, offset: <offset>)
+
+# Update humidity offset
+client.update_device_humidity_offset(device_id: <divice_id>, offset: <offset>)
+```
+
+### Appliances
+```ruby
+require 'natureremo'
+
+client = NatureRemo::Client.new(<token>)
+
+# get appliances
+client.appliances
+
+# Create a new appliance
+client.create_appliance(device_id: <divice_id>, nickname: <nickname>, image: <image>, model: <model>, model_type: <model_type>)
+
+# Reorder appliances
+client.update_appliance_orders(appliance_ids: <appliance_ids>)
+
+# Update appliance
+client.update_appliance(appliance_id: <appliance_id>, nickname: <nickname>, image: <image>)
+
+# Delete appliance
+client.delete_appliance(appliance_id: <appliance_id>)
+
+# Update air conditioner settings
+client.update_aircon_settings(appliance_id: <appliance_id>, temperature: <temperature>)
+
+# Update TV infrared signal
+client.update_tv_state(appliance_id: <appliance_id>, button: <button>)
+
+# Send light infrared signal
+client.update_light_state(appliance_id: <appliance_id>, button: <button>)
+```
+
+### Signals
+```ruby
+require 'natureremo'
+
+client = NatureRemo::Client.new(<token>)
+
+# get signals
+client.signals(appliance_id: <appliance_id>)
+
+# Create a signal under this appliance
+client.create_signal(appliance_id: <appliance_id>, name: <name>, image: <image>, message: <message>)
+
+# Reorder signals under this appliance
+client.update_signal_orders(appliance_ids: <appliance_ids>, signal_ids: <signal_ids>)
+
+# Update infrared signal
+client.update_signal(appliance_id: <appliance_id>, name: <name>, image: <image>)
+
+# Delete signal
+client.delete_signal(signal_id: <signal_id>)
+
+# Send infrared signal
+client.send_signal(signal_id: <signal_id>)
+```
 
 ## Development
 
