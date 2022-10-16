@@ -1,6 +1,6 @@
-# natureremo（Nature Remo API Client for Ruby）
+# nature_remo_client（Nature Remo API Client for Ruby）
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/natureremo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nature_remo_client`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -8,17 +8,17 @@ TODO: Delete this and the text above, and describe your gem
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add natureremo
+    $ bundle add nature_remo_client
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install natureremo
+    $ gem install nature_remo_client
 
 ## Usage
 ### Users
 
 ```ruby
-require 'natureremo'
+require 'nature_remo_client'
 
 client = NatureRemo::Client.new(<token>)
 
@@ -31,7 +31,7 @@ client.update_user_me(nickname: <nickname>)
 
 ### Deices
 ```ruby
-require 'natureremo'
+require 'nature_remo_client'
 
 client = NatureRemo::Client.new(<token>)
 
@@ -53,7 +53,7 @@ client.update_device_humidity_offset(device_id: <divice_id>, offset: <offset>)
 
 ### Appliances
 ```ruby
-require 'natureremo'
+require 'nature_remo_client'
 
 client = NatureRemo::Client.new(<token>)
 
@@ -84,7 +84,7 @@ client.update_light_state(appliance_id: <appliance_id>, button: <button>)
 
 ### Signals
 ```ruby
-require 'natureremo'
+require 'nature_remo_client'
 
 client = NatureRemo::Client.new(<token>)
 
@@ -115,7 +115,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/craft-cat/natureremo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/craft-cat/natureremo/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/craft-cat/nature_remo_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/craft-cat/nature_remo_client/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -123,4 +123,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the NatureRemo project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/craft-cat/natureremo/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the NatureRemo project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/craft-cat/nature_remo_client/blob/main/CODE_OF_CONDUCT.md).

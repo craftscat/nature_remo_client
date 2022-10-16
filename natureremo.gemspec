@@ -3,13 +3,13 @@
 require_relative 'lib/nature_remo/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'natureremo'
+  spec.name        = 'nature_remo_client'
   spec.version     = NatureRemo::VERSION
   spec.authors     = ['Takumi Yoshida']
   spec.email       = ['umibooose@gmail.com']
   spec.summary     = 'Nature Remo API client for ruby.'
   spec.description = 'Nature Remo API client for ruby.'
-  spec.homepage    = 'http://github.com/craftscat/natureremo'
+  spec.homepage    = 'http://github.com/craftscat/nature_remo_client'
   spec.license     = 'MIT'
 
   spec.required_ruby_version = '>= 2.6.0'
