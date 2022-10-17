@@ -1,5 +1,8 @@
 # nature_remo_client（Nature Remo API Client for Ruby）
 
+[![Gem Version](https://badge.fury.io/rb/nature_remo_client.svg)](https://rubygems.org/gems/nature_remo_client)
+[![GitHub Actions CI](https://github.com/craftscat/nature_remo_client/workflows/CI/badge.svg)](https://github.com/craftscat/nature_remo_client/actions?query=workflow%3ACI)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nature_remo_client`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
@@ -29,7 +32,7 @@ client.user_me
 client.update_user_me(nickname: <nickname>)
 ```
 
-### Deices
+### Devices
 ```ruby
 require 'nature_remo_client'
 
