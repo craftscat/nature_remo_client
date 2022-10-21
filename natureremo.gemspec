@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['lib/**/*', 'LICENCE', 'Rakefile', 'README.md']
 
-  spec.add_dependency 'faraday', '~> 1.0'
+  spec.add_dependency 'faraday', '>= 1', '< 3'
 
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'rake', '~> 13.0'
