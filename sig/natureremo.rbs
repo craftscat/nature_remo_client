@@ -107,9 +107,3 @@ module NatureRemo
     def on_complete: (untyped env) -> untyped
   end
 end
-
-# faraday's type definition is not sufficient
-module Faraday
-  class Middleware
-  end
-end
