@@ -1,6 +1,4 @@
 module NatureRemo
-  VERSION: String
-
   module Endpoints
     include Appliances
     include Devices
@@ -106,4 +104,6 @@ module NatureRemo
   class RaiseError < Faraday::Middleware
     def on_complete: (untyped env) -> untyped
   end
+
+  VERSION: String
 end
