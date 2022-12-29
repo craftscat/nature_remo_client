@@ -1,6 +1,4 @@
 module NatureRemo
-  VERSION: String
-
   module Endpoints
     include Appliances
     include Devices
@@ -106,10 +104,6 @@ module NatureRemo
   class RaiseError < Faraday::Middleware
     def on_complete: (untyped env) -> untyped
   end
-end
 
-# faraday's type definition is not sufficient
-module Faraday
-  class Middleware
-  end
+  VERSION: String
 end
