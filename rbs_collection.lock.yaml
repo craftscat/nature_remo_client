@@ -11,7 +11,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: activesupport
@@ -19,7 +19,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: ast
@@ -27,7 +27,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: concurrent-ruby
@@ -35,15 +35,23 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: csv
+  version: '0'
+  source:
+    type: stdlib
+- name: fileutils
+  version: '0'
+  source:
+    type: stdlib
 - name: i18n
   version: '1.10'
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: json
@@ -55,9 +63,13 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: logger
+  version: '0'
+  source:
+    type: stdlib
 - name: minitest
   version: '0'
   source:
@@ -67,7 +79,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rainbow
@@ -75,10 +87,14 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 9576ce5b109170f1ba8a42671bfafb64ab95bd23
+    revision: 9612e5e67697153dcc7464c01115db44d29b1e34
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: securerandom
+  version: '0'
+  source:
+    type: stdlib
+- name: strscan
   version: '0'
   source:
     type: stdlib
@@ -91,10 +107,6 @@ gems:
   source:
     type: stdlib
 - name: date
-  version: '0'
-  source:
-    type: stdlib
-- name: logger
   version: '0'
   source:
     type: stdlib
@@ -114,3 +126,4 @@ gems:
   version: '0'
   source:
     type: stdlib
+gemfile_lock_path: Gemfile.lock
