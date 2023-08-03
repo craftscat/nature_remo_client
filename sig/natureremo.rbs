@@ -46,6 +46,7 @@ module NatureRemo
     # NatureRemo::Endpoints::EchonetLite
     def echonet_lite_appliances: -> String
     def refresh_echonet_lite_properties: (String appliance_id, String epc) -> String
+    def set_echonet_lite_property: (String appliance_id, String epc, String val) -> String
 
     # NatureRemo::Endpoints::Signals
     def signals: (String device_id) -> String
