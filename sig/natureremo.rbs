@@ -13,6 +13,8 @@ module NatureRemo
     end
     module Users
     end
+    module EchonetLite
+    end
   end
 
   class Client
@@ -40,6 +42,11 @@ module NatureRemo
     def delete_device: (String device_id) -> String
     def update_device_temperature_offset: (String device_id, String offset) -> String
     def update_device_humidity_offset: (String device_id, String offset) -> String
+
+    # NatureRemo::Endpoints::EchonetLite
+    def echonet_lite_appliances: -> String
+    def refresh_echonet_lite_properties: (String appliance_id, String epc) -> String
+    def set_echonet_lite_property: (String appliance_id, String epc, String val) -> String
 
     # NatureRemo::Endpoints::Signals
     def signals: (String device_id) -> String
