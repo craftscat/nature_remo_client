@@ -2,7 +2,6 @@
 
 require_relative 'endpoints/appliances'
 require_relative 'endpoints/devices'
-require_relative 'endpoints/echonet_lite'
 require_relative 'endpoints/signals'
 require_relative 'endpoints/users'
 
@@ -11,7 +10,6 @@ module NatureRemo
   module Endpoints
     include Appliances
     include Devices
-    include EchonetLite
     include Signals
     include Users
   end
