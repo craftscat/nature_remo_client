@@ -5,7 +5,7 @@ require_relative 'lib/nature_remo/version'
 Gem::Specification.new do |spec|
   spec.name        = 'nature_remo_client'
   spec.version     = NatureRemo::VERSION
-  spec.authors     = ['Takumi Yoshida']
+  spec.authors     = ['craftscat']
   spec.email       = ['umibooose@gmail.com']
   spec.summary     = 'Nature Remo API client for ruby.'
   spec.description = 'Nature Remo API client for ruby.'
